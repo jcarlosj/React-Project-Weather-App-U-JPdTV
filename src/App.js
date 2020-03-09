@@ -11,7 +11,8 @@ function App() {
       city: '',
       country: ''
     }),
-    [ consumeAPI, setConsumeAPI ] = useState( false );    // Para controlar cuando se consume el API
+    [ consumeAPI, setConsumeAPI ] = useState( false ),    // Para controlar cuando se consume el API
+    [ dataAPI, setDataAPI ] = useState({});
 
   const { city, country } = dataForm;     // Destructuring State 'data'
 
@@ -19,14 +20,18 @@ function App() {
   useEffect( () => {
     const getDataApi = async () => {
 
-      /** API https://home.openweathermap.org/ */
-      const 
-        apiKey = '933d94cdb168e8ce1c25c7ef360a745a',
-        url = `http://api.openweathermap.org/data/2.5/weather?q=${ city },${ country }&appid=${ apiKey }`,
-        response = await fetch( url ),
-        data = await response .json();
+      if( consumeAPI ) {
 
-      console .log( 'API Data', data );
+        const     /** API https://home.openweathermap.org/ */
+          apiKey = '933d94cdb168e8ce1c25c7ef360a745a',
+          url = `http://api.openweathermap.org/data/2.5/weather?q=${ city },${ country }&appid=${ apiKey }`,
+          response = await fetch( url ),
+          data = await response .json();
+
+        //console .log( 'API Data', data );
+        setDataAPI( data );           // Guarda datos del API en el State
+
+      }
       
     }
     getDataApi();
@@ -49,7 +54,9 @@ function App() {
                   />
                 </div>
                 <div className="col m6 s12">
-                  <Weather />
+                  <Weather 
+                    dataAPI={ dataAPI }
+                  />
                 </div>
             </div>
         </div>
