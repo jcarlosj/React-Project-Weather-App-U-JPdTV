@@ -25,6 +25,16 @@ const Weather = ({ dataAPI }) => {      // Destructuring Props
                         <p className="temp">
                             { convertToCelsius( main .temp ) } <span>&#x2103;</span>
                         </p>
+                        <div className="row">
+                            <div className="col s6">
+                                <p className="sub-title">Mínima</p>
+                                <p className="temp temp-min">{ convertToCelsius( main .temp_min ) } <span>&#x2103;</span></p>
+                            </div>
+                            <div className="col s6">
+                                <p className="sub-title">Máxima</p>
+                                <p className="temp temp-max">{ convertToCelsius( main .temp_max ) } <span>&#x2103;</span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -30,7 +30,7 @@ function App() {
 
         //console .log( 'API Data', data );
         setDataAPI( data );           // Guarda datos del API en el State
-
+        setConsumeAPI( false );       // Cambia State que controla cuando se consume el API
       }
       
     }
