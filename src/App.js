@@ -17,10 +17,20 @@ function App() {
 
   /** Hooks */
   useEffect( () => {
-    console .clear();
-    console .log( 'City', city );
-    console .log( 'Country', country );
-    console .log( 'consumeAPI', consumeAPI );
+    const getDataApi = async () => {
+
+      /** API https://home.openweathermap.org/ */
+      const 
+        apiKey = '933d94cdb168e8ce1c25c7ef360a745a',
+        url = `http://api.openweathermap.org/data/2.5/weather?q=${ city },${ country }&appid=${ apiKey }`,
+        response = await fetch( url ),
+        data = await response .json();
+
+      console .log( 'API Data', data );
+      
+    }
+    getDataApi();
+
   }, [ consumeAPI ] );    // Hace Seguimiento a los cambios del State 'comsumeAPI'
 
   return (
