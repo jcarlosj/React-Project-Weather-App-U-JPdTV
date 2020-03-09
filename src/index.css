@@ -37,3 +37,17 @@ body {
   input[type=text]:not(.browser-default):focus:not([readonly]) + label {
     color: white;
   }
+
+  .btn.btn-block {
+    color: black;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  .error {
+    color: #039be5;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1.2rem;
+    text-align: center;
+  }

@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 const Form = () => {
 
     /** Define State */
-    const [ data, setData ] = useState({
-        city: '',
-        country: ''
-    });
+    const 
+        [ error, setError ] = useState( false ),
+        [ data, setData ] = useState({
+            city: '',
+            country: ''
+        });
 
     const { city, country } = data;     // Destructuring State 'data'
 
@@ -18,8 +20,28 @@ const Form = () => {
         });
     }
 
+    /** Enviar datos del formulario */
+    const handleSubmit = event => {
+        event .preventDefault();
+
+        /** Validate fields */
+        if( city .trim() === '' || country .trim() === '' ) {
+            setError( true );
+            return;
+        }
+        setError( true );
+
+    }
+
     return (
-        <form className="col s12">
+        <form 
+            className="col s12"
+            onSubmit={ handleSubmit }
+        >
+            { error 
+                ?   <p className="#f3e5f5 purple lighten-5 error">Todos los campos son obligatorios</p>
+                :   null
+            }
             <div className="row">
                 <div className="input-field col s12">
                     <input 
@@ -49,6 +71,12 @@ const Form = () => {
                         <option value="PE">Perú</option>
                     </select>
                     <label htmlFor="country">País</label>
+                </div>
+                <div className="input-field col s12">
+                    <button 
+                        type="submit"
+                        className="waves-effect waves-light btn btn-block btn-large yellow accent-4"
+                    >Consultar</button>
                 </div>
             </div>
         </form>
