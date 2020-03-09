@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Form = ({ dataForm, setDataForm }) => {     // Destructuting Props
+const Form = ({ dataForm, setDataForm, setConsumeAPI }) => {     // Destructuting Props
 
     /** Define State */
     const [ error, setError ] = useState( false );
@@ -27,7 +27,7 @@ const Form = ({ dataForm, setDataForm }) => {     // Destructuting Props
         setError( true );
 
         /** Send data to the main component */
-        
+        setConsumeAPI( true );
 
     }
 

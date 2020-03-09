@@ -6,10 +6,12 @@ import Weather from './components/Weather';
 function App() {
 
   /** Define State */
-  const [ dataForm, setDataForm ] = useState({
-    city: '',
-    country: ''
-  });
+  const 
+    [ dataForm, setDataForm ] = useState({
+      city: '',
+      country: ''
+    }),
+    [ consumeAPI, setConsumeAPI ] = useState( false );    // Para controlar cuando se consume el API
 
   const { city, country } = dataForm;     // Destructuring State 'data'
 
@@ -18,7 +20,8 @@ function App() {
     console .clear();
     console .log( 'City', city );
     console .log( 'Country', country );
-  }, [ city, country ] );
+    console .log( 'consumeAPI', consumeAPI );
+  }, [ consumeAPI ] );    // Hace Seguimiento a los cambios del State 'comsumeAPI'
 
   return (
     <Fragment>
@@ -32,6 +35,7 @@ function App() {
                   <Form 
                     dataForm={ dataForm }
                     setDataForm={ setDataForm }
+                    setConsumeAPI= { setConsumeAPI }
                   />
                 </div>
                 <div className="col m6 s12">
