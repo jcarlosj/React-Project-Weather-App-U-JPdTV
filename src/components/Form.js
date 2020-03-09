@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
 
-const Form = () => {
+const Form = ({ dataForm, setDataForm }) => {     // Destructuting Props
 
     /** Define State */
-    const 
-        [ error, setError ] = useState( false ),
-        [ data, setData ] = useState({
-            city: '',
-            country: ''
-        });
+    const [ error, setError ] = useState( false );
 
-    const { city, country } = data;     // Destructuring State 'data'
+    const { city, country } = dataForm;     // Destructuring State 'data'
 
     /** Agrega datos del formulario en el State */
     const handleChange = event => {
-        setData({
-            ...data,
+        setDataForm({
+            ...dataForm,
             [ event .target .name ]: event .target .value       /** Valores de los campos del Formulario */
         });
     }
@@ -30,6 +25,9 @@ const Form = () => {
             return;
         }
         setError( true );
+
+        /** Send data to the main component */
+        
 
     }
 
