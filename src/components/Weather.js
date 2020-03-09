@@ -7,6 +7,15 @@ const Weather = ({ dataAPI }) => {      // Destructuring Props
     /** Validate name */
     if( ! name ) return null;
 
+    /** Convert Kelvin to Celsius */
+    const convertToCelsius = ( kelvin ) => {
+        if ( kelvin < 0 ) {
+            return 0;
+        }             
+        
+        return parseFloat( kelvin - 273.15, 10 ) .toFixed( 2 );
+    }
+
     return (
         <div className="row">
             <div className="col s12">
@@ -14,7 +23,7 @@ const Weather = ({ dataAPI }) => {      // Destructuring Props
                     <div className="black-text text-center">
                         <h2>{ name }</h2>
                         <p className="temp">
-                            { main .temp } grados Kelvin
+                            { convertToCelsius( main .temp ) } <span>&#x2103;</span>
                         </p>
                     </div>
                 </div>

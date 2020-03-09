@@ -55,3 +55,10 @@ body {
   .text-center {
     text-align: center;
   }
+
+  .temp {
+    color: #039be5;
+    font-size: 5rem;
+    font-weight: bold;
+    margin: 0;
+  }
