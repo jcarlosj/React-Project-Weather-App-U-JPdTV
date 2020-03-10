@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import Weather from './components/Weather';
+import Error from './components/Error';
 
 function App() {
 
@@ -12,9 +13,12 @@ function App() {
       country: ''
     }),
     [ consumeAPI, setConsumeAPI ] = useState( false ),    // Para controlar cuando se consume el API
-    [ dataAPI, setDataAPI ] = useState({});
+    [ dataAPI, setDataAPI ] = useState({}),
+    [ error, setError ] = useState( false );
 
   const { city, country } = dataForm;     // Destructuring State 'data'
+
+  let component;
 
   /** Hooks */
   useEffect( () => {
@@ -28,15 +32,31 @@ function App() {
           response = await fetch( url ),
           data = await response .json();
 
-        //console .log( 'API Data', data );
+        console .log( 'API Response', response );
         setDataAPI( data );           // Guarda datos del API en el State
         setConsumeAPI( false );       // Cambia State que controla cuando se consume el API
+
+        /** Controla Códigos de Error del API */
+        console .log( 'Cod', data .cod );
+        if( data .cod == "404" ) {
+          setError( true );
+        } else {
+          setError( false );
+        }
+        
       }
       
     }
     getDataApi();
 
   }, [ consumeAPI ] );    // Hace Seguimiento a los cambios del State 'comsumeAPI'
+
+  /** Carga Condicional de Componentes */
+  if( error ) {
+    component = <Error msg="No hay resultados" />;
+  } else {
+    component = <Weather dataAPI={ dataAPI } />;
+  }
 
   return (
     <Fragment>
@@ -54,9 +74,7 @@ function App() {
                   />
                 </div>
                 <div className="col m6 s12">
-                  <Weather 
-                    dataAPI={ dataAPI }
-                  />
+                  { component }
                 </div>
             </div>
         </div>

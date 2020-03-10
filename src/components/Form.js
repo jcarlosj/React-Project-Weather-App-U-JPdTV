@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Error from './Error';
 
 const Form = ({ dataForm, setDataForm, setConsumeAPI }) => {     // Destructuting Props
 
@@ -24,7 +25,7 @@ const Form = ({ dataForm, setDataForm, setConsumeAPI }) => {     // Destructutin
             setError( true );
             return;
         }
-        setError( true );
+        setError( false );
 
         /** Send data to the main component */
         setConsumeAPI( true );
@@ -37,7 +38,7 @@ const Form = ({ dataForm, setDataForm, setConsumeAPI }) => {     // Destructutin
             onSubmit={ handleSubmit }
         >
             { error 
-                ?   <p className="#f3e5f5 purple lighten-5 error">Todos los campos son obligatorios</p>
+                ?   <Error msg="Todos los campos son obligatorios" />
                 :   null
             }
             <div className="row">
