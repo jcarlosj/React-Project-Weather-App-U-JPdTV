@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Error from './Error';
+import PropTypes from 'prop-types';
 
 const Form = ({ dataForm, setDataForm, setConsumeAPI }) => {     // Destructuting Props
 
@@ -80,6 +81,13 @@ const Form = ({ dataForm, setDataForm, setConsumeAPI }) => {     // Destructutin
             </div>
         </form>
     );
+}
+
+/** Verificación de Tipos */
+Form .propTypes = {
+    dataForm: PropTypes .object .isRequired, 
+    setDataForm: PropTypes .func .isRequired, 
+    setConsumeAPI: PropTypes .func .isRequired
 }
 
 export default Form;

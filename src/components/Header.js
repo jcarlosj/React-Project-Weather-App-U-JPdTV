@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Header = ({ title }) => (     // Return Implicito & Destructuracion del Props
     <nav>
@@ -7,5 +8,10 @@ const Header = ({ title }) => (     // Return Implicito & Destructuracion del Pr
         </div>
     </nav>
 );
+
+/** Verificación de Tipos */
+Header .propTypes = {
+    title: PropTypes .string .isRequired
+}
 
 export default Header;

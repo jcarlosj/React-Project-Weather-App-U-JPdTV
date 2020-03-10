@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Weather = ({ dataAPI }) => {      // Destructuring Props
 
@@ -40,6 +41,11 @@ const Weather = ({ dataAPI }) => {      // Destructuring Props
             </div>
         </div>
     );
+}
+
+/** Verificación de Tipos */
+Weather .propTypes = {
+    dataAPI: PropTypes .object .isRequired
 }
 
 export default Weather;
