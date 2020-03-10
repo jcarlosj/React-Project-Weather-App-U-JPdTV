@@ -28,7 +28,7 @@ function App() {
 
         const     /** API https://home.openweathermap.org/ */
           apiKey = '933d94cdb168e8ce1c25c7ef360a745a',
-          url = `http://api.openweathermap.org/data/2.5/weather?q=${ city },${ country }&appid=${ apiKey }`,
+          url = `https://api.openweathermap.org/data/2.5/weather?q=${ city },${ country }&appid=${ apiKey }`,
           response = await fetch( url ),
           data = await response .json();
 
