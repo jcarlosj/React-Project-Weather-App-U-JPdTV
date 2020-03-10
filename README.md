@@ -1,3 +1,9 @@
+# Weather
+
+Este proyecto consume la API https://home.openweathermap.org/ a través de la cual podemos consultar la temperatura en las ubicaciones suministradas en el formulario al pulsar el botón para consultar.
+
+La funcionalidad se ddesarrolla haciendo uso de conceptos como Components (Carga Condicional), Props, State, Hook (useState, useEffect) de React. (v.16.12.0). 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
